@@ -1,0 +1,19 @@
+.navigation {
+  font-size: 16px;
+  list-style: none;
+  margin-right: 20px;
+}
+
+.navigation li {
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  opacity: 1;
+  transition: opacity ease-in 0.2s;
+  padding: 5px;
+}
+
+.navigation li:hover {
+  opacity: 0.4;
+  transition: opacity ease-in 0.2s;
+}

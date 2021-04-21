@@ -1,0 +1,78 @@
+.speedometr {
+  margin-top: 10px;
+  width: 300px;
+  height: 150px;
+  border: 2px solid red;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  overflow: hidden;
+  background: mistyrose;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+
+.arrow {
+  width: 50%;
+  height: 2px;
+  background: black;
+  transform-origin: 100% 100%;
+}
+
+.count {
+  position: absolute;
+  left: 50%;
+}
+
+.speedometr strong {
+  position: absolute;
+}
+
+.speedometr strong:first-of-type {
+  left: 0;
+  color: blue;
+}
+
+.speedometr strong:nth-of-type(2) {
+  left: 13px;
+  bottom: 39px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(3) {
+  left: 34px;
+  bottom: 72px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(4) {
+  left: 72px;
+  bottom: 102px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(5) {
+  left: 110px;
+  bottom: 121px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(6) {
+  left: 156px;
+  bottom: 121px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(7) {
+  left: 201px;
+  bottom: 102px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(8) {
+  right: 34px;
+  bottom: 72px;
+  color: blue;
+}
+.speedometr strong:nth-of-type(9) {
+  right: 13px;
+  bottom: 39px;
+  color: blue;
+}
+.speedometr strong:last-of-type {
+  right: 0;
+  color: blue;
+}
