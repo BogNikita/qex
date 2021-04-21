@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Speedometr.css';
 
 export default function Speedometr({ count }) {
-  const [koef, setKoef] = useState(1.01);
-  const angle = count > 17 ? count * 10 * koef : count * 10;
-  useEffect(() => {
-    setKoef(koef * koef);
-  }, [koef]);
+  const angle = count > 17 ? 175 : count * 10;
+
   return (
     <div className="speedometr">
       <span className="count">{count}</span>
