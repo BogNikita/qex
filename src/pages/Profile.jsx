@@ -10,7 +10,7 @@ export default function Profile() {
   const { firstName, lastName, avatar } = useSelector(({ userProfile }) => userProfile);
   const { authorization } = useSelector(({ auth }) => auth);
   const userProfile = useSelector(({ userProfile }) => userProfile);
-  const [change, setChange] = useState(false);
+  const [isEdit, setEdit] = useState(false);
   const [userInfo, setUserInfo] = useState(userProfile);
   const dispatch = useDispatch();
 
@@ -18,10 +18,10 @@ export default function Profile() {
     return <Redirect to="/auth" />;
   }
 
-  const onHandleClick = (e) => {
+  const onSubmitHandler = (e) => {
     e.preventDefault();
-    setChange(!change);
-    if (change) {
+    setEdit(!isEdit);
+    if (isEdit) {
       dispatch(changeUserInfo(userInfo));
     }
   };
@@ -38,7 +38,7 @@ export default function Profile() {
 
   const fieldInfo = arrayLabels.map((item, i) => (
     <div key={`${item}_${i}`} className="profile-content__row">
-      {change ? (
+      {isEdit ? (
         <Input
           type="text"
           onChangeHandler={onChangeHandler}
@@ -54,23 +54,25 @@ export default function Profile() {
       )}
     </div>
   ));
+
   return (
-    <form className="profile" onSubmit={(e) => onHandleClick(e)}>
+    <form className="profile" onSubmit={onSubmitHandler}>
       <div className="profile-avatar">
-        {change ? (
+        {isEdit ? (
           <Input
             text="Ссылка на картинку"
             onChangeHandler={onChangeHandler}
             name="avatar"
             value={userInfo.avatar}
+            type='url'
           />
         ) : (
           <img src={avatar} alt="avatar" />
         )}
-        <Button type="submit" text={change ? 'Сохранить' : 'Редактировать'} />
+        <Button type="submit" text={isEdit ? 'Сохранить' : 'Редактировать'} />
       </div>
       <div className="profile-content">
-        {change ? (
+        {isEdit ? (
           <>
             <Input
               text="Имя"

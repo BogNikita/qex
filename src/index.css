@@ -103,6 +103,9 @@ body {
 
 .error {
   color: red;
+  display: block;
+  text-align: center;
+  padding: 5px 0;
 }
 
 .add-news {
@@ -110,7 +113,6 @@ body {
   padding: 10px;
   margin-bottom: 20px;
 }
-
 
 .add-news .btn {
   width: 200px;
@@ -123,7 +125,8 @@ body {
   flex-direction: column;
 }
 
-.profile-avatar .input input, .profile-avatar .input label {
+.profile-avatar .input input,
+.profile-avatar .input label {
   margin-top: 10px;
   width: 100%;
 }

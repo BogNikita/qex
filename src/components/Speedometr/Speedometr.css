@@ -2,16 +2,15 @@
   margin-top: 10px;
   width: 300px;
   height: 150px;
-  border: 2px solid red;
+  border: 2px solid #00000047;
   border-radius: 50% 50% 0 0 / 100% 100% 0 0;
   overflow: hidden;
-  background: mistyrose;
-  display: flex;
-  align-items: flex-end;
+  background: #b5d7d8;
   position: relative;
 }
 
 .arrow {
+  display: block;
   width: 50%;
   height: 2px;
   background: black;
@@ -21,58 +20,40 @@
 .count {
   position: absolute;
   left: 50%;
+  bottom: 0;
 }
 
-.speedometr strong {
-  position: absolute;
+.row {
+  width: 100%;
+  height: 29px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between; 
 }
 
-.speedometr strong:first-of-type {
-  left: 0;
-  color: blue;
+.row:first-of-type {
+  padding: 0 40%;
+  height: 20px;
 }
 
-.speedometr strong:nth-of-type(2) {
-  left: 13px;
-  bottom: 39px;
-  color: blue;
+.row:nth-of-type(2) {
+  padding: 0 25%;
+  height: 24px;
 }
-.speedometr strong:nth-of-type(3) {
-  left: 34px;
-  bottom: 72px;
-  color: blue;
+
+.row:nth-of-type(3) {
+  padding: 0 13%;
+  height: 33px;
 }
-.speedometr strong:nth-of-type(4) {
-  left: 72px;
-  bottom: 102px;
-  color: blue;
+
+.row:nth-of-type(4) {
+  padding: 0 5%;
+  height: 33px;
+  align-items: center;
 }
-.speedometr strong:nth-of-type(5) {
-  left: 110px;
-  bottom: 121px;
-  color: blue;
-}
-.speedometr strong:nth-of-type(6) {
-  left: 156px;
-  bottom: 121px;
-  color: blue;
-}
-.speedometr strong:nth-of-type(7) {
-  left: 201px;
-  bottom: 102px;
-  color: blue;
-}
-.speedometr strong:nth-of-type(8) {
-  right: 34px;
-  bottom: 72px;
-  color: blue;
-}
-.speedometr strong:nth-of-type(9) {
-  right: 13px;
-  bottom: 39px;
-  color: blue;
-}
-.speedometr strong:last-of-type {
-  right: 0;
-  color: blue;
+
+.row:last-of-type {
+  padding: 0 1%;
+  align-items: flex-end;
+  height: 34px;
 }

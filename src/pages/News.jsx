@@ -11,7 +11,7 @@ export default function News() {
     img: '',
   });
 
-  let news = useSelector(({ news }) => news);
+  const news = useSelector(({ news }) => news);
   const { firstName, avatar } = useSelector(({ userProfile }) => userProfile);
   const { authorization } = useSelector(({ auth }) => auth);
 

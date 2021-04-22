@@ -7,16 +7,27 @@ export default function Speedometr({ count }) {
   return (
     <div className="speedometr">
       <span className="count">{count}</span>
-      <strong>0</strong>
-      <strong>2</strong>
-      <strong>4</strong>
-      <strong>6</strong>
-      <strong>8</strong>
-      <strong>10</strong>
-      <strong>12</strong>
-      <strong>14</strong>
-      <strong>16</strong>
-      <strong>&#8734;</strong>
+      
+      <div className="row">
+        <i>8</i>
+        <i>10</i>
+      </div>
+      <div className="row">
+        <i>6</i>
+        <i>12</i>
+      </div>
+      <div className="row">
+        <i>4</i>
+        <i>14</i>
+      </div>
+      <div className="row">
+        <i>2</i>
+        <i>16</i>
+      </div>
+      <div className="row">
+        <i>0</i>
+        <i>&#8734;</i>
+      </div>
       <span className="arrow" style={{ transform: `rotate(${angle}deg)` }}></span>
     </div>
   );
