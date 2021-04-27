@@ -1,13 +1,13 @@
 import React from 'react';
 import './Speedometr.css';
 
-export default function Speedometr({ count }) {
+export default React.memo(function Speedometr({ count }) {
   const angle = count > 17 ? 175 : count * 10;
 
   return (
     <div className="speedometr">
       <span className="count">{count}</span>
-      
+
       <div className="row">
         <i>8</i>
         <i>10</i>
@@ -31,4 +31,4 @@ export default function Speedometr({ count }) {
       <span className="arrow" style={{ transform: `rotate(${angle}deg)` }}></span>
     </div>
   );
-}
+});

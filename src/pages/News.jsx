@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
@@ -6,10 +6,8 @@ import NewsItem from '../components/NewsItem/NewsItem';
 import { addNews } from '../store/actions/news';
 
 export default function News() {
-  const [newNews, setNewNews] = useState({
-    content: '',
-    img: '',
-  });
+  const [newNewsContent, setNewNewsContent] = useState('');
+  const [newNewsImg, setNewNewsImg] = useState('');
 
   const news = useSelector(({ news }) => news);
   const { firstName, avatar } = useSelector(({ userProfile }) => userProfile);
@@ -17,21 +15,15 @@ export default function News() {
 
   const dispatch = useDispatch();
 
-  const addNew = (e) => {
-    e.preventDefault();
-    dispatch(addNews({ author: firstName, avatar, content: newNews.content, img: newNews.img }));
-    setNewNews({
-      content: '',
-      img: '',
-    });
-  };
-
-  const onChangeHandler = (value, target) => {
-    setNewNews({
-      ...newNews,
-      [target]: value,
-    });
-  };
+  const addNew = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(addNews({ author: firstName, avatar, content: newNewsContent, img: newNewsImg }));
+      setNewNewsContent('');
+      setNewNewsImg('');
+    },
+    [firstName, avatar, dispatch, newNewsContent, newNewsImg],
+  );
 
   const newsElements = news.map((item, i) => (
     <NewsItem
@@ -48,17 +40,18 @@ export default function News() {
       {authorization ? (
         <form className="add-news" onSubmit={(e) => addNew(e)}>
           <Input
-            onChangeHandler={onChangeHandler}
+            onChangeHandler={setNewNewsContent}
             name="content"
             type="text"
             text="Текст новости"
-            value={newNews.content}
+            value={newNewsContent}
           />
           <Input
             name="img"
             type="url"
-            onChangeHandler={onChangeHandler}
+            onChangeHandler={setNewNewsImg}
             text="ссылка на изображение"
+            value={newNewsImg}
           />
           <Button text="добавить новость" type="submit" />
         </form>

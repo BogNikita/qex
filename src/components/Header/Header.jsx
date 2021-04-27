@@ -1,18 +1,17 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { logout } from '../../store/actions/auth';
 import './Header.css';
 
-export default function Header() {
-  const { authorization } = useSelector(({ auth }) => auth);
+export default React.memo(function Header({ authorization }) {
   const dispatch = useDispatch();
 
-  const onLogout = () => {
+  const onLogout = useCallback(() => {
     if (authorization) {
       dispatch(logout());
     }
-  };
+  }, [authorization, dispatch]);
 
   return (
     <header className="header">
@@ -24,4 +23,4 @@ export default function Header() {
       </div>
     </header>
   );
-}
+});

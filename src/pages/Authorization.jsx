@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import Button from '../components/Button/Button';
@@ -7,57 +7,47 @@ import Speedometr from '../components/Speedometr/Speedometr';
 import { login, tryLogin } from '../store/actions/auth';
 
 export default function Authorization() {
-  const [data, setData] = useState({
-    user: '',
-    password: '',
-  });
-
+  const [userInput, setUserInput] = useState('');
+  const [passwordInput, setPasswordInput] = useState('');
   const [error, setError] = useState('');
   const history = useHistory();
   const { user, password, countAuthorization } = useSelector(({ auth }) => auth);
 
   const dispatch = useDispatch();
 
-  const onChangeHandler = (value, target) => {
-    setData({
-      ...data,
-      [target]: value,
-    });
-    setError('');
-  };
-
-  const onLogin = (e) => {
-    e.preventDefault();
-    dispatch(tryLogin(countAuthorization + 1));
-    if (user === data.user && password === data.password) {
-      dispatch(login());
-      history.push('/profile');
-      setError('');
-    } else {
-      setData({
-        user: '',
-        password: '',
-      });
-      setError('Неверный логин или пароль');
-    }
-  };
+  const onLogin = useCallback(
+    (e) => {
+      e.preventDefault();
+      dispatch(tryLogin(countAuthorization + 1));
+      if (user === userInput && password === passwordInput) {
+        dispatch(login());
+        history.push('/profile');
+        setError('');
+      } else {
+        setUserInput('');
+        setPasswordInput('');
+        setError('Неверный логин или пароль');
+      }
+    },
+    [countAuthorization, userInput, passwordInput, dispatch, history, password, user],
+  );
 
   return (
     <div className="auth">
-      <form className="auth-wrapper" onSubmit={(e) => onLogin(e)}>
+      <form className="auth-wrapper" onSubmit={onLogin}>
         <Input
           name="user"
           text={'Ваше имя'}
           type={'text'}
-          onChangeHandler={onChangeHandler}
-          value={data.user}
+          onChangeHandler={setUserInput}
+          value={userInput}
         />
         <Input
           name="password"
           text={'Ваш пароль'}
           type={'password'}
-          onChangeHandler={onChangeHandler}
-          value={data.password}
+          onChangeHandler={setPasswordInput}
+          value={passwordInput}
         />
         {error ? <span className="error">{error}</span> : null}
         <Button text="Войти" type="submit" options="btn-login" />

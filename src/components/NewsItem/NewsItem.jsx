@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewsItem.css';
 
-export default function NewsItem({ author, avatar, content, img }) {
+export default React.memo(function NewsItem({ author, avatar, content, img }) {
   return (
     <div className="news-item">
       <div className="news-item__header">
@@ -14,4 +14,4 @@ export default function NewsItem({ author, avatar, content, img }) {
       </div>
     </div>
   );
-}
+})

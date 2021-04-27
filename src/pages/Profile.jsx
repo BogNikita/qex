@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import Button from '../components/Button/Button';
 import Input from '../components/Input/Input';
@@ -64,7 +63,7 @@ export default function Profile() {
             onChangeHandler={onChangeHandler}
             name="avatar"
             value={userInfo.avatar}
-            type='url'
+            type="url"
           />
         ) : (
           <img src={avatar} alt="avatar" />
